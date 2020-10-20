@@ -1,0 +1,51 @@
+import java.util.*; 
+public class MyClass {
+    public static void modifyMatrix(int m[][]){
+        boolean col0=true;
+        int rows=m.length,col=m[0].length;
+        for(int i=0;i<rows;i++)
+        {
+            if(m[i][0]==0)col0=false;
+            for(int j=1;j<col;j++)
+            {
+                if(m[i][j]==0)
+                m[0][j]=m[i][0]=0;
+            }
+        }
+        for(int i=rows-1;i>=0;i--)
+        {
+            for(int j=col-1;j>=0;j--)
+            {
+                if(m[i][0]==0 || m[0][j]==0)
+                m[i][j]=0;
+                if(col0==true)
+                m[i][0]=0;
+            }
+        }
+    }
+  public static void printMatrix(int mat[][]){ 
+        for (int i = 0; i < mat.length; i ++){ 
+            for (int j = 0; j < mat[0].length; j ++){ 
+                System.out.print( mat[i][j] ); 
+            } 
+                System.out.println(""); 
+        } 
+    } 
+              
+    // Driver function to test the above function 
+    public static void main(String args[] ){ 
+                  
+        int mat[][] = {{1, 1, 1, 1}, 
+                {1, 0, 1, 1}, 
+                {0, 1, 0, 1}}; 
+                  
+        System.out.println("Input Matrix :"); 
+        printMatrix(mat); 
+              
+        modifyMatrix(mat); 
+              
+        System.out.println("Matrix After Modification :"); 
+        printMatrix(mat); 
+              
+    } 
+}
